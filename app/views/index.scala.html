@@ -1,46 +1,25 @@
 @(signInForm: Form[(String, String)], status: Option[String] = None)(implicit session: play.api.mvc.Session)
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Welcome!</title>
-	@common.css()
-</head>
-				
-<body>			
-		
-		  @common.navBar()
+@common.template("Welcome"){
 
-			<div class="row-fluid">
-			
-				<div class="well span8 offset2">
-						
-            <h2>Welcome to Play2Example</h2>
+	<h2>Welcome to Play2Example</h2>
 
-	   		  	@if(!status.isEmpty){
-  			  		<div class="alert alert-success">
-			  			  @status
-			  		  </div>
-	  				}
-						
-						@signInForm.globalError.map{error => <div class="alert alert-error">@error.message</div>}
+	@if(!status.isEmpty){
+  	<div class="alert alert-success">
+			 @status
+		</div>
+  }
+					
+	@signInForm.globalError.map{error => <div class="alert alert-error">@error.message</div>}
 
-						@helper.form(action = routes.IndexController.signIn(), 'class -> "form-horizontal "){
-	  				  <fieldset>
-							  @helpers.input(signInForm("username"), '_label -> "Username", '_help -> "*")
-							  @helpers.input(signInForm("password"), '_type -> "password", '_label -> "Password", '_help -> "*")
-								@helpers.button("submit", "btn", "Sign in!")
-						  </fieldset>
-			   		 <p>New to Play2Example. Sign up <a href="/signUp">here</a></p>
-	    		  }
+	@helper.form(action = routes.IndexController.signIn(), 'class -> "form-horizontal "){
+    <fieldset>
+		  @helpers.input(signInForm("username"), '_label -> "Username", '_help -> "*")
+			@helpers.input(signInForm("password"), '_type -> "password", '_label -> "Password", '_help -> "*")
+			@helpers.button("submit", "btn", "Sign in!")
+		</fieldset>
+		<p>New to Play2Example. Sign up <a href="/signUp">here</a></p>
+  }
 
-	  	  </div>
-			
-			</div>
-
-			@common.footer()
-
-</body>
-
-</html>
+}
 

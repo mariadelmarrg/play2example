@@ -1,33 +1,14 @@
 @(signUpForm: Form[model.Client], status: Option[String] = None)(implicit session: play.api.mvc.Session)
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Welcome!</title>
-	@common.css()
-</head>
-				
-<body>
-						
-			@common.navBar()
+@common.template("Become a Play2Example member"){
+  <h2>New to Play2Example? Sign up</h2>
+	@helper.form(action = routes.SignUpController.signUp(), 'class -> "form-horizontal"){
+	  <fieldset>
+  	  @helpers.input(signUpForm("username"), '_label -> "Username", '_help -> "*")
+  		@helpers.input(signUpForm("name"), '_label -> "Name", '_help -> "*")
+  		@helpers.input(signUpForm("password"), '_type -> "password", '_label -> "Password", '_help -> "*")
+  		@helpers.button("submit", "btn", "Sign up!")
+	  </fieldset>
+  }
+}
 
-			<div class="row-fluid">
-
-				<div class="well span8 offset2">
-					<h2>New to Play2Example? Sign up</h2>
-	  		  @helper.form(action = routes.SignUpController.signUp(), 'class -> "form-horizontal"){
-	  	  		<fieldset>
-			  				@helpers.input(signUpForm("username"), '_label -> "Username", '_help -> "*")
-		  					@helpers.input(signUpForm("name"), '_label -> "Name", '_help -> "*")
-		   					@helpers.input(signUpForm("password"), '_type -> "password", '_label -> "Password", '_help -> "*")
-			    		  @helpers.button("submit", "btn", "Sign up!")
-				  	</fieldset>
-	    	  }
-	    	</div>
-	    </div>
-			
-			@common.footer()
-
-</body>
-
-</html>

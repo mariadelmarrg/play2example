@@ -1,26 +1,8 @@
 @()(implicit session: play.api.mvc.Session)
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Welcome!</title>
-	@common.css()
-</head>
-				
-<body>		
-
-	@common.navBar()
-
-	<div class="row-fluid">			
-
-			<div class="alert alert-error span8 offset2">
-				You are not authorized to access this view. Sign in <a href="/">here</a> to access it. 
-			</div>
-
+@common.template("Unauthorised"){
+  <div class="alert alert-error">
+	  You are not authorized to access this view. 
 	</div>
-
-	@common.footer()
-
-</body>
-
-</html>
+  <p>Sign in <a href="/">here</a> to access it. </p>
+}
