@@ -1,0 +1,18 @@
+@()(implicit session: play.api.mvc.Session)
+<div class="row-fluid">
+	<div class="navbar offset2 span8">
+  	<div class="navbar-inner">
+    	<a class="brand" href="/">Play2Example</a>	
+    	<ul class="nav">
+	      <li><a href="#">Link</a></li>
+      	<li><a href="#">Link</a></li>
+      	<li><a href="#">Link</a></li>
+    	</ul>
+    	<div class="pull-right">
+			  @if(!session.get("username").isEmpty){
+        	<a href="/logout" class="btn btn-default navbar-btn">Log out</a>
+      	}
+    	</div>
+  	</div>
+	</div>
+</div>

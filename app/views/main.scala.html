@@ -1,0 +1,29 @@
+@()(implicit session: play.api.mvc.Session)
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome!</title>
+	@common.css()
+</head>
+				
+<body>	
+		  
+      @common.navBar()
+
+			<div class="row-fluid">
+
+				<div class="well span8 offset2">
+
+	      	<p>User @session.get("username") is signed in!</p>
+
+				</div>
+
+			</div>
+      
+			@common.footer()
+
+</body>
+
+</html>

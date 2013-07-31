@@ -1,0 +1,20 @@
+@(field: play.api.data.Field, args: (Symbol,Any)*)(implicit lang: play.api.i18n.Lang)
+
+@import play.api.i18n._
+@import views.html.helper._
+
+@elements = @{ new FieldElements(field.id, field, null, args.toMap, lang) }
+
+<div class="control-group clearfix">
+    <label for="@elements.field.name" class="control-label">@elements.label</label>
+    <div class="controls">
+      <input type="@if(elements.args.contains('_type)){@elements.args.get('_type)}else{text}" 
+						 name="@elements.field.name" 
+ 						 id="@elements.field.name" 
+						 value="@elements.field.value"/>
+      <span class="help">@elements.infos.mkString(", ")</span>
+			@if(!elements.errors.isEmpty){<span class="alert alert-error">@elements.errors.mkString(", ")</span>}
+
+    </div>
+</div>
+ 
