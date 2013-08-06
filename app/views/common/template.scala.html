@@ -1,0 +1,28 @@
+@(title: String)(content: Html)(implicit session: play.api.mvc.Session)
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>@title</title>
+	@common.css()
+</head>
+				
+<body>			
+		
+		  @common.navBar()
+
+			<div class="row-fluid">
+			
+				<div class="well span8 offset2">
+						
+            @content
+
+	  	  </div>
+			
+			</div>
+
+			@common.footer()
+
+</body>
+
+</html>
